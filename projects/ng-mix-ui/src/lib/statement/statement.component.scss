@@ -1,0 +1,14 @@
+statement {
+    display: block;
+    line-height: 1.5;
+    padding: 0;
+
+    > header {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    > main {
+        font-size: 13px;
+    }
+}

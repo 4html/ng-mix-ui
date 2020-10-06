@@ -1,0 +1,29 @@
+<header *ngIf="fullScreen || title" [ngStyle]="styleHeader">
+    <span *ngIf="!tabs.length && title"
+          [ngStyle]="styleTabActive"
+          [title]="title"
+          (click)="updateActiveTab(0)">
+        {{ title }}
+    </span>
+    <span *ngFor="let tab of tabs; let index = index;"
+          [ngStyle]="hover === index && activeTab !== index ? styleTabHover : index === activeTab ? styleTabActive : styleTabIdle"
+          [title]="tab"
+          (click)="updateActiveTab(index)"
+          (mouseout)="hover = -1"
+          (mouseover)="hover = index">
+        {{ tab }}
+    </span>
+    <span *ngIf="fullScreen"
+          title="Expand/Collapse"
+          [ngStyle]="hover === -2 ? styleTabHover : styleTabIdle"
+          (click)="fullScreen && toggleFullScreen()"
+          (mouseout)="hover = -1"
+          (mouseover)="hover = -2">
+        <div></div>
+        <div></div>
+    </span>
+</header>
+<main [style.top]="fullScreen || title ? '32px' : '0'"
+      [ngStyle]="styleMain">
+        <ng-content></ng-content>
+</main>

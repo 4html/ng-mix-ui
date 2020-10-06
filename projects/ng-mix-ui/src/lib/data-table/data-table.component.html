@@ -1,0 +1,27 @@
+<thead *ngIf="tHeadRows.length">
+    <tr *ngFor="let row of tHeadRows">
+        <th *ngFor="let cell of row"
+            [attr.colspan]="cell.colspan"
+            [attr.rowspan]="cell.rowspan"
+            [ngClass]="cell.class"
+        >{{ cell.value }}</th>
+    </tr>
+</thead>
+<tbody *ngIf="tBodyRows.length">
+    <tr *ngFor="let row of tBodyRows">
+        <td *ngFor="let cell of row"
+            [attr.colspan]="cell.colspan"
+            [attr.rowspan]="cell.rowspan"
+            [ngClass]="cell.class"
+        >{{ cell.value }}</td>
+    </tr>
+</tbody>
+<tfoot *ngIf="tFootRows.length">
+    <tr *ngFor="let row of tFootRows">
+        <th *ngFor="let cell of row"
+            [attr.colspan]="cell.colspan"
+            [attr.rowspan]="cell.rowspan"
+            [ngClass]="cell.class"
+        >{{ cell.value }}</th>
+    </tr>
+</tfoot>
