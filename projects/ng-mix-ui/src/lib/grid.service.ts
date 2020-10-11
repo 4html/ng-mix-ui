@@ -8,6 +8,7 @@ const DEFAULT_DENOMINATOR = 12;
 export class GridService {
 
     breakHeights: [number, string|number][];
+    breakHeightScales: [number, string|number][];
     breaks: { heights: [number, string|number][], widths: [number, string|number][] }[];
     breakWidths: [number, string|number][];
     cellElements: HTMLElement[];
@@ -16,6 +17,8 @@ export class GridService {
     cellRowIndexes: {};
     currentCellValues: { height: string, width: string }[];
     heightDenom: number = DEFAULT_DENOMINATOR;
+    heightScale: string;
+    heightScaleCurrent: number;
     rowFixedTotals: number[];
     widthDenom: number = DEFAULT_DENOMINATOR;
 
@@ -23,13 +26,47 @@ export class GridService {
 
 
 
-    initCells(cellElements: HTMLElement[], heightDenom: string, widthDenom: string): void {
+    initCells(cellElements: HTMLElement[], heightDenom: string, heightScale: string, widthDenom: string): void {
+
         this.heightDenom = heightDenom ? +heightDenom : DEFAULT_DENOMINATOR;
+        this.heightScale = heightScale;
         this.widthDenom = widthDenom ? +widthDenom : DEFAULT_DENOMINATOR;
         this.cellElements = Array.from(cellElements) || [];
+
+        this.readHeightScales();
         this.readCellProps();
         this.readBreaks();
         this.updateView();
+    }
+
+
+
+    readHeightScales(): void {
+        if (!this.heightScale) {
+            this.heightScaleCurrent = 1;
+            return;
+        }
+        this.heightScale = this.trim(this.heightScale);
+        this.breakHeightScales = this.splitBreaks(this.heightScale);
+        this.breakHeightScales = this.breakHeightScales.sort((a, b) => a[0] > b[0] ? 1 : -1);
+    }
+
+
+
+    getCurrentHeightScaleBreak(): void {
+        if (!this.heightScale) {
+            this.heightScaleCurrent = 1;
+            return;
+        }
+        let heightScale = 1;
+        for (const pair of this.breakHeightScales) {
+            if (window.innerHeight >= pair[0]) {
+                heightScale = +pair[1];
+            } else {
+                break;
+            }
+        }
+        this.heightScaleCurrent = heightScale;
     }
 
 
@@ -41,28 +78,24 @@ export class GridService {
         this.cellPropValues = [];
 
         this.cellElements.forEach(cell => {
-
             strippedHeight = cell.attributes['height'] ? cell.attributes['height'].value : '';
-            while (strippedHeight.match(/\s\s/)) {
-                strippedHeight = strippedHeight.replace(/\s\s/, ' ');
-            }
-            while (strippedHeight.match(/^\s/)) {
-                strippedHeight = strippedHeight.replace(/^\s/, '');
-            }
-
             strippedWidth = cell.attributes['width'] ? cell.attributes['width'].value : '';
-            while (strippedWidth.match(/\s\s/)) {
-                strippedWidth = strippedWidth.replace(/\s\s/, ' ');
-            }
-            while (strippedWidth.match(/^\s/)) {
-                strippedWidth = strippedWidth.replace(/^\s/, '');
-            }
-
             this.cellPropValues.push({
-                height: strippedHeight,
-                width: strippedWidth
+                height: this.trim(strippedHeight),
+                width: this.trim(strippedWidth)
             });
         });
+    }
+
+
+
+    trim(value: string): string {
+        while (value.match(/\s\s/)) {
+            value = value.replace(/\s\s/, ' ');
+        }
+        value = value.replace(/^\s/, '');
+        value = value.replace(/\s$/, '');
+        return value;
     }
 
 
@@ -114,6 +147,7 @@ export class GridService {
 
     updateView(): void {
         this.getCurrentBreakValues();
+        this.getCurrentHeightScaleBreak();
         this.setCalcValues();
         this.applyStyles();
     }
@@ -222,28 +256,43 @@ export class GridService {
 
     applyStyles(): void {
         this.cellStyles.forEach(({ height, width }, index) => {
-            if (height.match('/')) {
-                let percentage = width.split('* ')[1];
-                percentage = percentage.split(')')[0];
-                const fraction = height.split('/');
-                const ratio = (+fraction[1] / +fraction[0]) * 100 * + percentage + '%';
-                this.cellElements[index].style.height = '0';
-                this.cellElements[index].style.paddingTop = ratio;
-            } else {
-                if (height.match('%')) {
-                    height = height.replace('%', 'vh');
-                }
-                if (height.match('-')) {
-                    const pair = height.split('-');
-                    if (+pair[0]) {
-                        pair[0] = ((+pair[0] / this.heightDenom) * 100) + 'vh';
-                    }
-                    height = 'calc(' + pair[0] + ' - ' + pair[1] + ')';
-                }
-                this.cellElements[index].style.height = height;
-            }
+            this.setHeightStyle(height, index, width);
             this.cellElements[index].style.width = width;
         });
+    }
+
+
+
+    setHeightStyle(height: string, index: number, width: string): void {
+
+        if (height.match('/')) {
+            this.setHeightRatioStyles(height, index, width);
+            return;
+        }
+
+        const pair = height.split('-');
+        if (+pair[0]) {
+            pair[0] = ((+pair[0] / this.heightDenom) * 100 * this.heightScaleCurrent) + 'vh';
+        } else if (pair[0].match('%')) {
+            const mainHeight = pair[0].split('%')[0];
+            const heightWithScale = +mainHeight * this.heightScaleCurrent;
+            pair[0] = heightWithScale + 'vh';
+        }
+
+        height = height.match('-') ? `calc(${pair[0]} - ${pair[1]})` : pair[0];
+        this.cellElements[index].style.height = height;
+    }
+
+
+
+    setHeightRatioStyles(height: string, index: number, width: string): void {
+        let percentage = width.split('* ')[1];
+        percentage = percentage.split(')')[0];
+        const fraction = height.split('/');
+        // no height scaling for ratios because ratio would break
+        const ratio = (+fraction[1] / +fraction[0]) * 100 + percentage + '%';
+        this.cellElements[index].style.height = '0';
+        this.cellElements[index].style.paddingTop = ratio;
     }
 
 

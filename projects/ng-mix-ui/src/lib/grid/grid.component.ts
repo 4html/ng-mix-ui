@@ -11,6 +11,7 @@ import { GridService } from '../grid.service';
 export class GridComponent implements OnInit {
 
     @Input() 'height-denom': string;
+    @Input() 'height-scale': string;
     @Input() 'width-denom': string;
 
     @HostListener('window:resize', [])
@@ -22,7 +23,12 @@ export class GridComponent implements OnInit {
                 private gridService: GridService) { }
 
     ngOnInit(): void {
-        this.gridService.initCells(this.element.nativeElement.children, this['height-denom'], this['width-denom']);
+        this.gridService.initCells(
+            this.element.nativeElement.children,
+            this['height-denom'],
+            this['height-scale'],
+            this['width-denom']
+        );
     }
 
 }
