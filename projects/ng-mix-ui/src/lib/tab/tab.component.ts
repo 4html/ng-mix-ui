@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
+    encapsulation: ViewEncapsulation.None,
     selector: 'tab',
     styleUrls: ['./tab.component.scss'],
     templateUrl: './tab.component.html'
