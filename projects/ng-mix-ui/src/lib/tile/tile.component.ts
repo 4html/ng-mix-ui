@@ -25,7 +25,7 @@ import {
 })
 export class TileComponent implements OnInit {
 
-    activeTab = 0;
+    activeTab: number;
     fullScreenActive: boolean;
     hover = -1;
     marginActive = '';
@@ -44,7 +44,7 @@ export class TileComponent implements OnInit {
     @Input('style-tab-active') styleTabActive: {};
     @Input('style-tab-idle') styleTabIdle: {};
     @Input('style-tab-hover') styleTabHover: {};
-    @Input() tab: string;
+    @Input() tab: number;
     @Input() title: string;
 
     @HostBinding('style.boxShadow') boxShadow = this.boxShadowInput || hostStyles.boxShadow;
@@ -62,6 +62,7 @@ export class TileComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.activeTab = this.tab || 0;
         this.setContainerPositions();
         this.setStyles();
         this.marginBreaks = this.setBreaks(this.marginValue);
@@ -171,7 +172,7 @@ export class TileComponent implements OnInit {
             if (title && title.value) {
                 this.tabs.push(title.value);
                 if (index !== +this.tab) {
-                    tab.style.display = 'none';
+                    tab.style.display = 'none'; // TODO: remove, adjust renderer below instead
                 }
             }
             index++;
@@ -228,6 +229,7 @@ export class TileComponent implements OnInit {
             || main.children[index].nodeName !== 'TAB') {
             return;
         }
+        // TODO: change to element create/destroy
         this.renderer.setStyle(main.children[this.activeTab], 'display', 'none');
         this.renderer.setStyle(main.children[index], 'display', 'block');
         this.activeTab = index;
