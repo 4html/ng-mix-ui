@@ -28,12 +28,14 @@ export class TileComponent implements OnInit {
     activeTab: number;
     fullScreenActive: boolean;
     hover = -1;
+    mainElement: HTMLElement;
     marginActive = '';
     marginBreaks = [];
     paddingActive = '';
     paddingBreaks = [];
     positionStyles = {};
-    tabs: string[] = [];
+    tabElements: Element[];
+    tabTitles: string[] = [];
 
     @Input('box-shadow') boxShadowInput: string = '';
     @Input('full-screen') fullScreen: boolean;
@@ -62,14 +64,19 @@ export class TileComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.activeTab = this.tab || 0;
+        this.activeTab = +this.tab || 0;
         this.setContainerPositions();
         this.setStyles();
         this.marginBreaks = this.setBreaks(this.marginValue);
         this.paddingBreaks = this.setBreaks(this.paddingValue);
         this.updateView();
         this.setTabState();
-        this.updateActiveTab(0);
+        this.updateActiveTab(this.activeTab);
+    }
+
+
+
+    ngAfterContentInit(): void {
     }
 
 
@@ -166,16 +173,17 @@ export class TileComponent implements OnInit {
 
 
     setTabState(): void {
-        let index = 0;
-        for (const tab of this.element.nativeElement.children[0].children) {
-            const { title } = tab.attributes;
+        this.mainElement = this.element.nativeElement.children[0];
+        const mainTabs = this.mainElement.children;
+        const length = mainTabs.length;
+        this.tabElements = [];
+        for (let i = 0; i < length; i++) {
+            const title = mainTabs[0].attributes['title'];
             if (title && title.value) {
-                this.tabs.push(title.value);
-                if (index !== +this.tab) {
-                    tab.style.display = 'none'; // TODO: remove, adjust renderer below instead
-                }
+                this.tabTitles.push(title.value);
             }
-            index++;
+            this.tabElements.push(mainTabs[0]);
+            this.renderer.removeChild(this.mainElement, mainTabs[0]);
         }
     }
 
@@ -190,7 +198,7 @@ export class TileComponent implements OnInit {
 
     applyFullScreen(): void {
         [
-            ['margin', '15px'],
+            ['margin', '2px'],
             ['position', 'fixed'],
             ['top', '0'],
             ['left', '0'],
@@ -221,17 +229,10 @@ export class TileComponent implements OnInit {
 
 
     updateActiveTab(index): void {
-        const main = this.element.nativeElement.children[1];
-        if (!main
-            || !main.children
-            || !main.children.length
-            || !main.children[index]
-            || main.children[index].nodeName !== 'TAB') {
-            return;
+        if (this.activeTab !== index && this.tabElements[this.activeTab]) {
+            this.renderer.removeChild(this.mainElement, this.tabElements[this.activeTab]);
         }
-        // TODO: change to element create/destroy
-        this.renderer.setStyle(main.children[this.activeTab], 'display', 'none');
-        this.renderer.setStyle(main.children[index], 'display', 'block');
+        this.renderer.appendChild(this.mainElement, this.tabElements[index]);
         this.activeTab = index;
     }
 

@@ -1,11 +1,10 @@
 <header *ngIf="fullScreen || title" [ngStyle]="styleHeader">
-    <span *ngIf="!tabs.length && title"
+    <span *ngIf="!tabTitles.length && title"
           [ngStyle]="styleTabActive"
-          [title]="title"
-          (click)="updateActiveTab(0)">
+          [title]="title">
         {{ title }}
     </span>
-    <span *ngFor="let tab of tabs; let index = index;"
+    <span *ngFor="let tab of tabTitles; let index = index;"
           [ngStyle]="hover === index && activeTab !== index ? styleTabHover : index === activeTab ? styleTabActive : styleTabIdle"
           [title]="tab"
           (click)="updateActiveTab(index)"
@@ -25,5 +24,5 @@
 </header>
 <main [style.top]="fullScreen || title ? '32px' : '0'"
       [ngStyle]="styleMain">
-        <ng-content></ng-content>
+    <ng-content></ng-content>
 </main>
