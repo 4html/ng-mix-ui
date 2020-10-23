@@ -76,11 +76,6 @@ export class TileComponent implements OnInit {
 
 
 
-    ngAfterContentInit(): void {
-    }
-
-
-
     setContainerPositions(): void {
         this.positionStyles = {};
         if (!this.element.nativeElement.parentNode.attributes.getNamedItem('height')) {
@@ -174,16 +169,18 @@ export class TileComponent implements OnInit {
 
     setTabState(): void {
         this.mainElement = this.element.nativeElement.children[0];
-        const mainTabs = this.mainElement.children;
-        const length = mainTabs.length;
-        this.tabElements = [];
-        for (let i = 0; i < length; i++) {
-            const title = mainTabs[0].attributes['title'];
-            if (title && title.value) {
-                this.tabTitles.push(title.value);
+        if (this.mainElement) {
+            const mainTabs = this.mainElement.children;
+            const length = mainTabs.length;
+            this.tabElements = [];
+            for (let i = 0; i < length; i++) {
+                const title = mainTabs[0].attributes['title'];
+                if (title && title.value) {
+                    this.tabTitles.push(title.value);
+                }
+                this.tabElements.push(mainTabs[0]);
+                this.renderer.removeChild(this.mainElement, mainTabs[0]);
             }
-            this.tabElements.push(mainTabs[0]);
-            this.renderer.removeChild(this.mainElement, mainTabs[0]);
         }
     }
 
@@ -232,7 +229,9 @@ export class TileComponent implements OnInit {
         if (this.activeTab !== index && this.tabElements[this.activeTab]) {
             this.renderer.removeChild(this.mainElement, this.tabElements[this.activeTab]);
         }
-        this.renderer.appendChild(this.mainElement, this.tabElements[index]);
+        if (this.tabElements[index]) {
+            this.renderer.appendChild(this.mainElement, this.tabElements[index]);
+        }
         this.activeTab = index;
     }
 
