@@ -343,7 +343,7 @@ However, for the components that have styling attributes those will take priorit
 
 ### Passing in Style Objects
 
-Certain component will merge any styling you pass to them, buut remember to use braces for objects:
+Certain component will merge any styling you pass to them, but remember to use braces for objects:
 
 ```
 <grid>

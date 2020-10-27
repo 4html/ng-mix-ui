@@ -1,2 +1,2 @@
-<main>{{ value }}</main>
-<footer *ngIf="caption">{{ caption }}</footer>
+<main [ngStyle]="valueStyle">{{ value }}</main>
+<footer *ngIf="caption" [ngStyle]="captionStyle">{{ caption }}</footer>

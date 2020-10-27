@@ -90,11 +90,11 @@ export class TileComponent implements OnInit {
 
 
     setStyles(): void {
-        this.styleMain = { ...mainStyles, ...this.positionStyles };
-        this.styleHeader = { ...headerStyles, ...this.positionStyles };
-        this.styleTabActive = { ...tabActiveStyles };
-        this.styleTabHover = { ...tabHoverStyles };
-        this.styleTabIdle = { ...tabIdleStyles };
+        this.styleMain = { ...mainStyles, ...this.positionStyles, ...this.styleMain };
+        this.styleHeader = { ...headerStyles, ...this.positionStyles, ...this.styleHeader };
+        this.styleTabActive = { ...tabActiveStyles, ...this.styleTabActive };
+        this.styleTabHover = { ...tabHoverStyles, ...this.styleTabHover };
+        this.styleTabIdle = { ...tabIdleStyles, ...this.styleTabIdle };
     }
 
 

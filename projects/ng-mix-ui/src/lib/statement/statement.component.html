@@ -1,2 +1,2 @@
-<header *ngIf="title">{{ title }}</header>
-<main><ng-content></ng-content></main>
+<header *ngIf="title" [ngStyle]="titleStyle">{{ title }}</header>
+<main [ngStyle]="contentStyle"><ng-content></ng-content></main>
