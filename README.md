@@ -162,7 +162,7 @@ Zero is used as a the base default for all view sizes until a break is set.
 Each break is for greater than or equal to the value used.
 If no break is set, then all sizes will use the 0 setting or its default.
 
-####"0:12" Shortcut
+#### "0:12" Shortcut
 
 You don't need to set 0 to 12 because it defaults as the denominator set (12 by default).
 These 2 lines will do the same thing:
@@ -172,7 +172,7 @@ These 2 lines will do the same thing:
 <cell></cell>
 ```
 
-####"0:" Shortcut
+#### "0:" Shortcut
 
 You can omit the "0:" in the attributes. These 2 lines will do the same thing:
 

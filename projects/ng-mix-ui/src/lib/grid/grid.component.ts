@@ -10,9 +10,9 @@ import { GridService } from '../grid.service';
 })
 export class GridComponent implements OnInit {
 
-    @Input() 'height-denom': string;
-    @Input() 'height-scale': string;
-    @Input() 'width-denom': string;
+    @Input('height-denom') heightDenom: string;
+    @Input('height-scale') heightScale : string;
+    @Input('width-denom') widthDenom: string;
 
     @HostListener('window:resize', [])
     onResize(): void {
@@ -22,12 +22,12 @@ export class GridComponent implements OnInit {
     constructor(private element: ElementRef,
                 private gridService: GridService) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.gridService.initCells(
             this.element.nativeElement.children,
-            this['height-denom'],
-            this['height-scale'],
-            this['width-denom']
+            this.heightDenom,
+            this.heightScale,
+            this.widthDenom
         );
     }
 
