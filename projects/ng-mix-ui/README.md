@@ -1,6 +1,6 @@
 # Mix-UI
 
-#### ng-mix-ui / react-mix-ui
+#### ng-mix-ui
 
 http://mix-ui.com
 
