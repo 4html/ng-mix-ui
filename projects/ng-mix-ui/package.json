@@ -1,6 +1,6 @@
 {
   "name": "ng-mix-ui",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "peerDependencies": {
     "@angular/common": "^10.1.4",
     "@angular/core": "^10.1.4"

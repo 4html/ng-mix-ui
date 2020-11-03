@@ -16,9 +16,9 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
     <cell> .. </cell>
 ```
 
-* 12 units is the widths' default, which makes 100% of the width.
+* 12 units is the cell width default, which makes up 100% of the grid width.
 * This cell would always make a full row.
-* Any following cells then wrap making a grid.
+* Any following cells would then wrap, making a grid.
 
 ```
     <cell width="425:8 1000:9"> .. </cell>
@@ -52,7 +52,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 * Intuitive maintainability:
 
     - less syntax means less to manage
-    - data-driven within markup for responsive views
+    - data-driven within mark-up for responsive views
     - semantic
 
 
@@ -158,9 +158,8 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 
 ### Zero Defaults
 
-Zero is used as a the base default for all view sizes until a break is set.
 Each break is for greater than or equal to the value used.
-If no break is set, then all sizes will use the 0 setting or its default.
+If no break is present, then all sizes will use the 0 setting, which means 12 (or 100%) when >= 0.
 
 #### "0:12" Shortcut
 
@@ -174,7 +173,7 @@ These 2 lines will do the same thing:
 
 #### "0:" Shortcut
 
-You can omit the "0:" in the attributes. These 2 lines will do the same thing:
+You can omit the "0:" in the attributes too. These 2 lines will do the same thing:
 
 ```
 <cell width="0:6" height="0:3"></cell>
@@ -185,8 +184,8 @@ You can omit the "0:" in the attributes. These 2 lines will do the same thing:
 
 ### Width Fixed
 
-You can also use fixed widths for breakpoints. Simply add the suffice of the measurement like you would with CSS.
-Any cells in the remaining space is then split up to use the rest of the percentage space.
+You can also use fixed widths for breakpoints. Simply add the measurement like you would with CSS.
+Any cells nested within the remaining space will be split up within that context.
 
 ```
 <grid>
@@ -250,10 +249,10 @@ Top is the default.
 
 ### Denominator
 
-The denominator for a grid's rows is 12 by default, but you can change it with the denominator property.
+The denominator for a grid's rows is 12 by default, but you can change it with the height-denom and width-denom properties.
 
 ```
-<grid denominator="5">
+<grid width-denom="5">
     <cell width="2"> 2/5 of row </cell>
     <cell width="3"> 3/5 of row </cell>
 </grid>
@@ -263,8 +262,9 @@ The denominator for a grid's rows is 12 by default, but you can change it with t
 
 ### Decimals
 
-Decimal numbers are allowed for the cell width setting.
-For example, if you wanted to create a 5 column grid using the default 12 denominator, you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
+Decimals ok to use too.
+For example, if you wanted to create a 5 column grid using the default 12-denominator,
+you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
 
 ```
 <grid>
@@ -313,14 +313,14 @@ If you place absolute items within a cell the cell itself is the parent for the 
 
 ### Nesting Components in Cells
 
-To abstract various parts of cells inside of custom components be sure to start your nested teplates with a new grid.
+To abstract various parts of cells inside of custom components be sure to start your nested templates with a new grid.
 
 *parent:*
 
 ```
 <grid>
     <cell>
-        <my-comp></my-comp-1>
+        <my-comp></my-comp>
     </cell>
 </grid>
 ```
@@ -335,7 +335,7 @@ To abstract various parts of cells inside of custom components be sure to start 
 
 ### Outside Styling
 
-The library components' styles are not encapsulated.
+The library components do not use encapsulated styling.
 This means that you can add or change styling to them with normal CSS anywhere after the library itself.
 However, for the components that have styling attributes those will take priority.
 
