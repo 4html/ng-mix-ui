@@ -290,7 +290,7 @@ export class GridService {
         percentage = percentage.split(')')[0];
         const fraction = height.split('/');
         // no height scaling for ratios because ratio would break
-        const ratio = (+fraction[1] / +fraction[0]) * 100 + percentage + '%';
+        const ratio = ((+fraction[1] / +fraction[0]) * (100 * +percentage)) + '%';
         this.cellElements[index].style.height = '0';
         this.cellElements[index].style.paddingTop = ratio;
     }
