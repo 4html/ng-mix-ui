@@ -173,13 +173,15 @@ export class TileComponent implements OnInit {
             const mainTabs = this.mainElement.children;
             const length = mainTabs.length;
             this.tabElements = [];
-            for (let i = 0; i < length; i++) {
-                const title = mainTabs[0].attributes['title'];
-                if (title && title.value) {
-                    this.tabTitles.push(title.value);
+            if (mainTabs.length && mainTabs[0].nodeName === 'TAB') {
+                for (let i = 0; i < length; i++) {
+                    const title = mainTabs[0].attributes['title'];
+                    if (title && title.value) {
+                        this.tabTitles.push(title.value);
+                    }
+                    this.tabElements.push(mainTabs[0]);
+                    this.renderer.removeChild(this.mainElement, mainTabs[0]);
                 }
-                this.tabElements.push(mainTabs[0]);
-                this.renderer.removeChild(this.mainElement, mainTabs[0]);
             }
         }
     }
