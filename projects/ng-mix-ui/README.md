@@ -262,7 +262,7 @@ The denominator for a grid's rows is 12 by default, but you can change it with t
 
 ### Decimals
 
-Decimals ok to use too.
+Decimals are ok to use too.
 For example, if you wanted to create a 5 column grid using the default 12-denominator,
 you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
 
