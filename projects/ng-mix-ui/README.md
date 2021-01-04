@@ -59,7 +59,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 
 ### Reference
 
-| Directive                | Description                        | Default       |
+| Directive                | Description                        | Default/Value |
 | ------------------------ | ---------------------------------- |:-------------:|
 | **\<grid>**              | placeholder for cells              |               |
 | height-denom=""          | units per view height              | 12            |
@@ -75,6 +75,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 | ..                       | nest content                       |               |
 | **\<tile>**              | placeholder for content or tabs    |               |
 | box-shadow=""            | css box shadow                     | 0 0 2px black |
+| (full-screen-change)=""  | full screen changed $event         | in/active     |
 | margin=""                | [ >= window width pixels]:[px],*   | 2px           |
 | padding=""               | [ >= window width pixels]:[px/em]  | 1em           |
 | \[style-header]="{}"     | style object                       | **            |
@@ -82,6 +83,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 | \[style-tab-hover]="{}"  | style object                       | **            |
 | \[style-tab-idle]="{}"   | style object                       | **            |
 | tab=""                   | initial tab to open                | 0             |
+| (tab-change)=""          | tab changed $event                 | new tab index |
 | title=""                 | the header if no tabs              |               |
 | ..                       | nest content                       |               |
 | **\<tab>**               | a tab within a tile                |               |

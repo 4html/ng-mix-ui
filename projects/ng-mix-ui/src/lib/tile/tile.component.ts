@@ -1,10 +1,12 @@
 import {
     Component,
     ElementRef,
+    EventEmitter,
     HostBinding,
     HostListener,
     Input,
     OnInit,
+    Output,
     Renderer2,
     ViewEncapsulation
 } from '@angular/core';
@@ -49,6 +51,9 @@ export class TileComponent implements OnInit {
     @Input() tab: number;
     @Input() title: string;
 
+    @Output('full-screen-change') fullScreenChange = new EventEmitter();
+    @Output('tab-change') tabChange = new EventEmitter();
+
     @HostBinding('style.boxShadow') boxShadow = this.boxShadowInput || hostStyles.boxShadow;
     @HostBinding('style.height') height: string;
     @HostBinding('style.margin') margin: string;
@@ -72,6 +77,12 @@ export class TileComponent implements OnInit {
         this.updateView();
         this.setTabState();
         this.updateActiveTab(this.activeTab);
+    }
+
+
+
+    ngOnChanges(): void {
+        this.updateActiveTab(this.tab);
     }
 
 
@@ -191,11 +202,13 @@ export class TileComponent implements OnInit {
     toggleFullScreen(): void {
         this.fullScreenActive = !this.fullScreenActive;
         this.fullScreenActive ? this.applyFullScreen() : this.cancelFullScreen();
+        this.fullScreenChange.emit(this.fullScreenActive);
     }
 
 
 
     applyFullScreen(): void {
+        // TODO: convert to class and properties
         [
             ['margin', '2px'],
             ['position', 'fixed'],
@@ -212,6 +225,7 @@ export class TileComponent implements OnInit {
 
 
     cancelFullScreen(): void {
+        // TODO: change to class
         [
             ['margin', this.margin],
             ['position', 'absolute'],
@@ -228,6 +242,9 @@ export class TileComponent implements OnInit {
 
 
     updateActiveTab(index): void {
+        if (this.tab === undefined || !this.tabElements) {
+            return;
+        }
         if (this.activeTab !== index && this.tabElements[this.activeTab]) {
             this.renderer.removeChild(this.mainElement, this.tabElements[this.activeTab]);
         }
@@ -235,6 +252,7 @@ export class TileComponent implements OnInit {
             this.renderer.appendChild(this.mainElement, this.tabElements[index]);
         }
         this.activeTab = index;
+        this.tabChange.emit(this.activeTab);
     }
 
 

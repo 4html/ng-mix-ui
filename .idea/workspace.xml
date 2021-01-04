@@ -10,7 +10,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4df4fcc7-98cc-4f43-b508-20339a5c402c" name="Default Changelist" comment="" />
+    <list default="true" id="4df4fcc7-98cc-4f43-b508-20339a5c402c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/tile/tile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/tile/tile.component.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,11 +32,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../seaglance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../greatearthgallery.com" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="ts.external.directory.path" value="C:\Users\Justin\WebstormProjects\ng-mix-ui\ng-mix-ui\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\Justin\WebstormProjects\ng-mix-ui\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -49,11 +55,22 @@
       <option name="presentableId" value="Default" />
       <updated>1601942744984</updated>
       <workItem from="1601942746254" duration="1496000" />
+      <workItem from="1605741880741" duration="4781000" />
+      <workItem from="1606751994421" duration="1097000" />
+      <workItem from="1608500167945" duration="408000" />
+      <workItem from="1609786399801" duration="666000" />
+      <workItem from="1609787127664" duration="1699000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="additionalRoots">
+      <list>
+        <option value="$PROJECT_DIR$/dist/ng-mix-ui" />
+        <option value="$PROJECT_DIR$/dist/ng-mix-ui/ng-mix-ui.d.ts" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -65,19 +82,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="501" y="215" key="FileChooserDialogImpl" timestamp="1601943576077">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="501" y="215" key="FileChooserDialogImpl/0.0.1440.920@0.0.1440.920" timestamp="1601943576077" />
-    <state x="222" y="105" key="SettingsEditor" timestamp="1601944282491">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="222" y="105" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1601944282491" />
-    <state x="426" y="193" width="589" height="534" key="find.popup" timestamp="1601943170569">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="426" y="193" width="589" height="534" key="find.popup/0.0.1440.920@0.0.1440.920" timestamp="1601943170569" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
