@@ -7,9 +7,10 @@ https://mix-ui.com
 ---
 
 UI gets complex fast, especially when you need **fixed sized areas to be mixed with percentages**.
-Mix-UI lets you create very lean layouts using data-driven cell components have the smarts to understand these different contexts.
+Mix-UI lets you create very lean layouts using data-driven cell components that have the smarts to understand these different contexts.
 You can set **unlimited breakpoints directly within the mark-up** instead of using cumbersome CSS.
-Also, the grid is able to work **horizontally and vertically** making this a great option for creating SPAs and dashboards easily and instantly that will work for all sizes of screens.
+Also, the grid is able to work **horizontally and vertically** making this a great option for creating SPAs and dashboards.
+Make your apps work for all sizes of screens easily and instantly.
 
 ```
 <grid>
@@ -72,7 +73,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 |                          | offset 0:12-10px                   |               |
 |                          | offset 0:100%-10px                 |               |
 | width=""                 | [ >= window width pixels]:[0-12],* | 0:12          |
-| !                        | force new row, width="6!"          |               |
+| !                        | force new row after, width="6!"    |               |
 | ..                       | nest content                       |               |
 | **\<tile>**              | placeholder for content or tabs    |               |
 | box-shadow=""            | css box shadow                     | 0 0 2px black |
@@ -85,8 +86,8 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 | \[style-tab-hover]="{}"  | style object                       | **            |
 | \[style-tab-idle]="{}"   | style object                       | **            |
 | tab=""                   | initial tab to open                | 0             |
-| tabSave=""               | true remembers and loads last tab  | false         |
 | (tab-change)=""          | tab changed $event                 | new tab index |
+| [tab-save]=""            | true remembers and loads last tab  | false         |
 | title=""                 | default title (required for tabs)  /               |
 | ..                       | nest content                       |               |
 | **\<tab>**               | a tab within a tile                |               |
@@ -218,8 +219,6 @@ Without the "!" all of these cells would fit as one row.
 ```
 
 
-
-
 ### Height Options
 
 * ```height="12"``` - By fraction, using the height denominator. 
@@ -270,7 +269,6 @@ Top is the default.
 ---
 
 
-
 ### Denominator
 
 The denominator for a grid's rows is 12 by default, but you can change it with the height-denom and width-denom properties.
@@ -281,7 +279,6 @@ The denominator for a grid's rows is 12 by default, but you can change it with t
     <cell width="3"> 3/5 of row </cell>
 </grid>
 ```
-
 
 
 ### Decimals
@@ -300,7 +297,6 @@ you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
 ```
 
 
-
 ### Nesting
 
 ```
@@ -314,7 +310,6 @@ you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
     </cell>
 </grid>
 ```
-
 
 
 ### Absolute Positioning
@@ -332,7 +327,6 @@ If you place absolute items within a cell the cell itself is the parent for the 
     </cell>
 </grid>
 ```
-
 
 
 ### Nesting Components in Cells
@@ -362,12 +356,24 @@ To abstract various parts of cells inside of custom components be sure to start 
 The library components do not use encapsulated styling.
 This means that you can add or change styling to them with normal CSS anywhere after the library itself.
 However, for the components that have styling attributes those will take priority.
+Consider using non-encapsulated nested styling with a CSS preprocessor:
 
+```
+my-component {
+    
+    grid {
+        
+        cell {
+        
+        }
+    }
+}
+```
 
 
 ### Passing in Style Objects
 
-Certain component will merge any styling you pass to them, but remember to use braces for objects:
+Certain components will merge any styling you pass to them. Remember to use braces for objects:
 
 ```
 <grid>

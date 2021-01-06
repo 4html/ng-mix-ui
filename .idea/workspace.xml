@@ -10,10 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4df4fcc7-98cc-4f43-b508-20339a5c402c" name="Default Changelist" comment="Added tab-save as an option.">
+    <list default="true" id="4df4fcc7-98cc-4f43-b508-20339a5c402c" name="Default Changelist" comment="Updated notes and added semantic cell align values.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/cell/cell.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/cell/cell.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,8 @@
       <workItem from="1609786399801" duration="666000" />
       <workItem from="1609787127664" duration="1749000" />
       <workItem from="1609917628885" duration="1403000" />
-      <workItem from="1609956341880" duration="1123000" />
+      <workItem from="1609956341880" duration="1749000" />
+      <workItem from="1609962090878" duration="803000" />
     </task>
     <task id="LOCAL-00001" summary="ADded change listener for tab index.">
       <created>1609788890917</created>
@@ -76,15 +76,22 @@
       <option name="project" value="LOCAL" />
       <updated>1609919986330</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated notes and added semantic cell align values.">
+      <created>1609957562513</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609957562513</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
     <option name="additionalRoots">
       <list>
-        <option value="$PROJECT_DIR$/dist/ng-mix-ui" />
         <option value="$PROJECT_DIR$/dist/ng-mix-ui/ng-mix-ui.d.ts" />
+        <option value="$PROJECT_DIR$/dist/ng-mix-ui" />
       </list>
     </option>
   </component>
@@ -103,6 +110,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ADded change listener for tab index." />
     <MESSAGE value="Added tab-save as an option." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tab-save as an option." />
+    <MESSAGE value="Updated notes and added semantic cell align values." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated notes and added semantic cell align values." />
   </component>
 </project>
