@@ -65,14 +65,17 @@ export class CellComponent implements OnInit {
         switch (this.alignActive) {
 
             case 't':
+            case 'top':
                 this.alignSelf = 'flex-start';
                 break;
 
             case 'm':
+            case 'middle':
                 this.alignSelf = 'center';
                 break;
 
             case 'b':
+            case 'bottom':
                 this.alignSelf = 'flex-end';
                 break;
         }

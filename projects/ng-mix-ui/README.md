@@ -2,7 +2,7 @@
 
 #### ng-mix-ui
 
-http://mix-ui.com
+https://mix-ui.com
 
 ---
 
@@ -67,17 +67,19 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 | width-denom=""           | units per row                      | 12            |
 | ..                       | nest cells                         |               |
 | **\<cell>**              | placeholder for content or a tile  |               |
-| align=""                 | [ >= window width pixels]:[t,m,b], | 0:t (top)     |
+| align=""                 | [ >= window width pixels]:[t,m,b], | 0:top         |
 | height=""                | [ >= window width pixels]:[0-12],* | 0:auto        |
 |                          | offset 0:12-10px                   |               |
 |                          | offset 0:100%-10px                 |               |
 | width=""                 | [ >= window width pixels]:[0-12],* | 0:12          |
+| !                        | force new row, width="6!"          |               |
 | ..                       | nest content                       |               |
 | **\<tile>**              | placeholder for content or tabs    |               |
 | box-shadow=""            | css box shadow                     | 0 0 2px black |
 | (full-screen-change)=""  | full screen changed $event         | in/active     |
 | margin=""                | [ >= window width pixels]:[px],*   | 2px           |
 | padding=""               | [ >= window width pixels]:[px/em]  | 1em           |
+| \[style]="{}"            | style object                       | **            |
 | \[style-header]="{}"     | style object                       | **            |
 | \[style-tab-active]="{}" | style object                       | **            |
 | \[style-tab-hover]="{}"  | style object                       | **            |
@@ -85,7 +87,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 | tab=""                   | initial tab to open                | 0             |
 | tabSave=""               | true remembers and loads last tab  | false         |
 | (tab-change)=""          | tab changed $event                 | new tab index |
-| title=""                 | the header if no tabs              |               |
+| title=""                 | default title (required for tabs)  /               |
 | ..                       | nest content                       |               |
 | **\<tab>**               | a tab within a tile                |               |
 | title=""                 | title of the tab                   |               |
@@ -164,6 +166,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 Each break is for greater than or equal to the value used.
 If no break is present, then all sizes will use the 0 setting, which means 12 (or 100%) when >= 0.
 
+
 #### "0:12" Shortcut
 
 You don't need to set 0 to 12 because it defaults as the denominator set (12 by default).
@@ -174,6 +177,7 @@ These 2 lines will do the same thing:
 <cell></cell>
 ```
 
+
 #### "0:" Shortcut
 
 You can omit the "0:" in the attributes too. These 2 lines will do the same thing:
@@ -182,7 +186,6 @@ You can omit the "0:" in the attributes too. These 2 lines will do the same thin
 <cell width="0:6" height="0:3"></cell>
 <cell width="6" height="3"></cell>
 ```
-
 
 
 ### Width Fixed
@@ -198,6 +201,24 @@ Any cells nested within the remaining space will be split up within that context
     <cell width="6"> D is always 50% of the window width - 250px </cell>
 </grid>
 ```
+
+### Force Row Wrap
+
+When combining fixed widths with percentages, the percentage cells fill out the rest of the space.
+To force a break end the width value with a "!".
+In the following example the third cell will always be on a new row. 
+Without the "!" all of these cells would fit as one row.
+
+```
+<grid>
+    <cell width="100px"> 100px </cell>
+    <cell width="500px!"> 500px </cell>
+    <cell width="12"> A new row. </cell>
+</grid>
+```
+
+
+
 
 ### Height Options
 
@@ -217,7 +238,7 @@ Top is the default.
 
 ```
 <cell width="6"> A <br> A <br> A </cell>
-<cell width="6"> B </cell>
+<cell width="6" align="top"> B </cell>
 ```
 
 | A | B |   
@@ -228,7 +249,7 @@ Top is the default.
 
 ```
 <cell width="6"> A <br> A <br> A </cell>
-<cell width="6" align="m"> B </cell>
+<cell width="6" align="middle"> B </cell>
 ```
 
 | A |  
@@ -239,7 +260,7 @@ Top is the default.
 
 ```
 <cell width="0:6"> A <br> A <br> A </cell>
-<cell width="0:6" align="b"> B </cell>
+<cell width="0:6" align="bottom"> B </cell>
 ```
 
 | A |  
@@ -351,7 +372,7 @@ Certain component will merge any styling you pass to them, but remember to use b
 ```
 <grid>
     <cell>
-        <tile [style-header]="{ background: 'red', color: 'white' }">
+        <tile [style]="{}" [style-header]="{ background: 'red', color: 'white' }">
             ..
         </tile>
     </cell>
@@ -429,4 +450,4 @@ Certain component will merge any styling you pass to them, but remember to use b
 
 ---
 
-http://mix-ui.com
+https://mix-ui.com
