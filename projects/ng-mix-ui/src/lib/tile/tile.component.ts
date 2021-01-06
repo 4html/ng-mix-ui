@@ -49,6 +49,7 @@ export class TileComponent implements OnInit {
     @Input('style-tab-idle') styleTabIdle: {};
     @Input('style-tab-hover') styleTabHover: {};
     @Input() tab: number;
+    @Input('tab-save') tabSave: boolean;
     @Input() title: string;
 
     @Output('full-screen-change') fullScreenChange = new EventEmitter();
@@ -69,7 +70,8 @@ export class TileComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.activeTab = +this.tab || 0;
+        const tileTab = localStorage.getItem('tile-tab');
+        this.activeTab = (this.tabSave && tileTab) ? +tileTab : +this.tab || 0;
         this.setContainerPositions();
         this.setStyles();
         this.marginBreaks = this.setBreaks(this.marginValue);
@@ -252,6 +254,9 @@ export class TileComponent implements OnInit {
             this.renderer.appendChild(this.mainElement, this.tabElements[index]);
         }
         this.activeTab = index;
+        if (this.tabSave) {
+            localStorage.setItem('tile-tab', this.activeTab.toString());
+        }
         this.tabChange.emit(this.activeTab);
     }
 

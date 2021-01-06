@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4df4fcc7-98cc-4f43-b508-20339a5c402c" name="Default Changelist" comment="">
+    <list default="true" id="4df4fcc7-98cc-4f43-b508-20339a5c402c" name="Default Changelist" comment="ADded change listener for tab index.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/package.json" afterDir="false" />
@@ -34,7 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../greatearthgallery.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="C:\Users\Justin\WebstormProjects\ng-mix-ui\node_modules\typescript\lib" />
@@ -59,8 +59,17 @@
       <workItem from="1606751994421" duration="1097000" />
       <workItem from="1608500167945" duration="408000" />
       <workItem from="1609786399801" duration="666000" />
-      <workItem from="1609787127664" duration="1699000" />
+      <workItem from="1609787127664" duration="1749000" />
+      <workItem from="1609917628885" duration="1319000" />
     </task>
+    <task id="LOCAL-00001" summary="ADded change listener for tab index.">
+      <created>1609788890917</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609788890917</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,5 +92,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ADded change listener for tab index." />
+    <option name="LAST_COMMIT_MESSAGE" value="ADded change listener for tab index." />
   </component>
 </project>

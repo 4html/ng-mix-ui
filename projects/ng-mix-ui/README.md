@@ -83,6 +83,7 @@ Also, the grid is able to work **horizontally and vertically** making this a gre
 | \[style-tab-hover]="{}"  | style object                       | **            |
 | \[style-tab-idle]="{}"   | style object                       | **            |
 | tab=""                   | initial tab to open                | 0             |
+| tabSave=""               | true remembers and loads last tab  | false         |
 | (tab-change)=""          | tab changed $event                 | new tab index |
 | title=""                 | the header if no tabs              |               |
 | ..                       | nest content                       |               |
