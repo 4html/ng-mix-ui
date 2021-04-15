@@ -5,6 +5,13 @@ data-table {
 
     thead {
 
+        tr:first-of-type {
+
+            th {
+                border-top: none;
+            }
+        }
+
         th {
             background: #2294d3;
             border: 1px solid lightgray;
@@ -36,5 +43,5 @@ data-table {
             padding: 10px;
         }
     }
-}
 
+}

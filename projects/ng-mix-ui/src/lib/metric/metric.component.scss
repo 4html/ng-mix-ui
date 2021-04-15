@@ -1,31 +1,33 @@
 metric {
     bottom: 0;
+    display: table;
+    height: 100%;
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
+    width: 100%;
 
     > main {
-        bottom: 40%;
-        font-size: 24px;
-        font-weight: bold;
-        left: 0;
+        display: table-cell;
         overflow: hidden;
-        position: absolute;
-        right: 0;
         text-align: center;
-    }
+        vertical-align: middle;
 
-    > footer {
-        bottom: 0;
-        color: gray;
-        font-size: 14px;
-        font-weight: bold;
-        left: 0;
-        overflow: hidden;
-        position: absolute;
-        right: 0;
-        text-align: center;
-        top: 60%;
+        > div {
+
+            &:nth-of-type(1) {
+                font-size: 24px;
+                font-weight: bold;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &:nth-of-type(2) {
+                color: gray;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
     }
 }

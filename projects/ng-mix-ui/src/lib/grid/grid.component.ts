@@ -22,7 +22,9 @@ export class GridComponent implements OnInit {
     constructor(private element: ElementRef,
                 private gridService: GridService) { }
 
-    ngOnInit() {
+    ngOnInit() { }
+
+    ngAfterViewInit() {
         this.gridService.initCells(
             this.element.nativeElement.children,
             this.heightDenom,

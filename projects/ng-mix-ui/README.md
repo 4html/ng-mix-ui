@@ -93,12 +93,12 @@ Make your apps work for all sizes of screens easily and instantly.
 | **\<tab>**               | a tab within a tile                |               |
 | title=""                 | title of the tab                   |               |
 | ..                       | nest content                       |               |
-| **\<metric>**            | widget that display 1 or 2 values  |               |
+| **\<metric>**            | widget that displays 1 or 2 values  |               |
 | caption=""               | optional secondary value           |               |
 | \[style-caption]="{}"    | style object                       | **            |
 | \[style-value]="{}"      | style object                       | **            |
 | value=""                 | the main value                     |               |
-| **\<statement>**         | widget that display 1 or 2 values  |               |
+| **\<statement>**         | widget that displays 1 or 2 values  |               |
 | \[style-content]="{}"    | style object                       | **            |
 | \[style-title]="{}"      | style object                       | **            |
 | title=""                 | optional bolded title              |               |
@@ -225,7 +225,7 @@ Without the "!" all of these cells would fit as one row.
 * ```height="50%"``` - By percentage, of the view height.
 * ```height="200px"``` - By a fixed amount.
 * ```height="50%-100px"``` - Offset a percentage.
-* ```height="4/3"``` - Force a ratio. The height will size to make the ratio.
+* ```height="4/3"``` - Force a ratio. The height will force the ratio. For any content inside, be sure to use absolute positioning due to how the ratio is created.
 
 
 ### Align
@@ -453,6 +453,14 @@ Certain components will merge any styling you pass to them. Remember to use brac
     </flex-buttons>
 </tile>
 ```
+
+---
+
+* 1.1.24: cells can now be drawn with ngFor, refined metric so it's aligned true middle, removed border-top of tables
+* 1.1.23: just minor note clean up
+* 1.1.22: added semantic cell align values
+* 1.1.21: save-tab as an option (remembers last tab state)
+* 1.1.20: added a tile tab-change emitter to allow additional logic in response to tab changes
 
 ---
 
