@@ -6,6 +6,15 @@ https://mix-ui.com
 
 ---
 
+* 1.1.26: added 'update' prop to grid to allow a force refresh (pass in any new value to update the grid)
+* 1.1.24: cells can now be drawn with ngFor, refined metric so it's aligned true middle, removed border-top of tables
+* 1.1.23: just minor note clean up
+* 1.1.22: added semantic cell align values
+* 1.1.21: save-tab as an option (remembers last tab state)
+* 1.1.20: added a tile tab-change emitter to allow additional logic in response to tab changes
+
+---
+
 UI gets complex fast, especially when you need **fixed sized areas to be mixed with percentages**.
 Mix-UI lets you create very lean layouts using data-driven cell components that have the smarts to understand these different contexts.
 You can set **unlimited breakpoints directly within the mark-up** instead of using cumbersome CSS.
@@ -65,6 +74,7 @@ Make your apps work for all sizes of screens easily and instantly.
 | **\<grid>**              | placeholder for cells              |               |
 | height-denom=""          | units per view height              | 12            |
 | height-scale=""          | cell heights based on height       | 0:1           |
+| update=""                | pass in a new value to refresh     |               |
 | width-denom=""           | units per row                      | 12            |
 | ..                       | nest cells                         |               |
 | **\<cell>**              | placeholder for content or a tile  |               |
@@ -168,6 +178,7 @@ Each break is for greater than or equal to the value used.
 If no break is present, then all sizes will use the 0 setting, which means 12 (or 100%) when >= 0.
 
 
+
 #### "0:12" Shortcut
 
 You don't need to set 0 to 12 because it defaults as the denominator set (12 by default).
@@ -179,6 +190,7 @@ These 2 lines will do the same thing:
 ```
 
 
+
 #### "0:" Shortcut
 
 You can omit the "0:" in the attributes too. These 2 lines will do the same thing:
@@ -187,6 +199,7 @@ You can omit the "0:" in the attributes too. These 2 lines will do the same thin
 <cell width="0:6" height="0:3"></cell>
 <cell width="6" height="3"></cell>
 ```
+
 
 
 ### Width Fixed
@@ -202,6 +215,7 @@ Any cells nested within the remaining space will be split up within that context
     <cell width="6"> D is always 50% of the window width - 250px </cell>
 </grid>
 ```
+
 
 ### Force Row Wrap
 
@@ -219,6 +233,7 @@ Without the "!" all of these cells would fit as one row.
 ```
 
 
+
 ### Height Options
 
 * ```height="12"``` - By fraction, using the height denominator. 
@@ -226,6 +241,7 @@ Without the "!" all of these cells would fit as one row.
 * ```height="200px"``` - By a fixed amount.
 * ```height="50%-100px"``` - Offset a percentage.
 * ```height="4/3"``` - Force a ratio. The height will force the ratio. For any content inside, be sure to use absolute positioning due to how the ratio is created.
+
 
 
 ### Align
@@ -269,6 +285,7 @@ Top is the default.
 ---
 
 
+
 ### Denominator
 
 The denominator for a grid's rows is 12 by default, but you can change it with the height-denom and width-denom properties.
@@ -279,6 +296,7 @@ The denominator for a grid's rows is 12 by default, but you can change it with t
     <cell width="3"> 3/5 of row </cell>
 </grid>
 ```
+
 
 
 ### Decimals
@@ -297,6 +315,7 @@ you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
 ```
 
 
+
 ### Nesting
 
 ```
@@ -310,6 +329,7 @@ you could simply make your cell widths use multiples of 12 / 5, which is 2.4:
     </cell>
 </grid>
 ```
+
 
 
 ### Absolute Positioning
@@ -327,6 +347,7 @@ If you place absolute items within a cell the cell itself is the parent for the 
     </cell>
 </grid>
 ```
+
 
 
 ### Nesting Components in Cells
@@ -351,6 +372,7 @@ To abstract various parts of cells inside of custom components be sure to start 
 ```
 
 
+
 ### Outside Styling
 
 The library components do not use encapsulated styling.
@@ -371,6 +393,23 @@ my-component {
 ```
 
 
+
+### Force a Grid Refresh
+
+Use an 'update' prop in the grid to force a refresh whenever it changes.
+Any time that value changes it will refresh and that value can be anything.
+In this example, any time the length of a cells array changes the grid knows to refresh itself:
+
+```
+<grid [update]="cells.length">
+    <cell *ngFor="let cell of cells">
+        {{ cell.value }}
+    </cell>
+</grid>
+```
+
+
+
 ### Passing in Style Objects
 
 Certain components will merge any styling you pass to them. Remember to use braces for objects:
@@ -384,6 +423,7 @@ Certain components will merge any styling you pass to them. Remember to use brac
     </cell>
 </grid>
 ```
+
 
 
 ### Metric Component
@@ -454,13 +494,7 @@ Certain components will merge any styling you pass to them. Remember to use brac
 </tile>
 ```
 
----
 
-* 1.1.24: cells can now be drawn with ngFor, refined metric so it's aligned true middle, removed border-top of tables
-* 1.1.23: just minor note clean up
-* 1.1.22: added semantic cell align values
-* 1.1.21: save-tab as an option (remembers last tab state)
-* 1.1.20: added a tile tab-change emitter to allow additional logic in response to tab changes
 
 ---
 

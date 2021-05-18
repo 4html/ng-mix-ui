@@ -14,11 +14,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/data-table/data-table.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/data-table/data-table.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/data-table/data-table.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/data-table/data-table.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/grid.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/grid.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/grid/grid.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/grid/grid.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/metric/metric.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/metric/metric.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/metric/metric.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/metric/metric.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/tile/tile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/ng-mix-ui/src/lib/tile/tile.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mix-ui.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="C:\Users\Justin\WebstormProjects\ng-mix-ui\node_modules\typescript\lib" />
@@ -74,7 +72,12 @@
       <workItem from="1610512299661" duration="609000" />
       <workItem from="1618163192427" duration="874000" />
       <workItem from="1618250071129" duration="208000" />
-      <workItem from="1618444973442" duration="10771000" />
+      <workItem from="1618444973442" duration="12015000" />
+      <workItem from="1618633427620" duration="1347000" />
+      <workItem from="1618723165283" duration="336000" />
+      <workItem from="1618794217055" duration="3568000" />
+      <workItem from="1621306636684" duration="9317000" />
+      <workItem from="1621349157795" duration="1335000" />
     </task>
     <task id="LOCAL-00001" summary="ADded change listener for tab index.">
       <created>1609788890917</created>
@@ -104,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609963115904</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="1.1.24">
+      <created>1618462874777</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618462874777</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +143,7 @@
     <MESSAGE value="Added tab-save as an option." />
     <MESSAGE value="Updated notes and added semantic cell align values." />
     <MESSAGE value="Cleaned up notes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up notes." />
+    <MESSAGE value="1.1.24" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.1.24" />
   </component>
 </project>

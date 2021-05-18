@@ -22,7 +22,9 @@
         <div></div>
     </span>
 </header>
-<main [style.top]="fullScreen || title ? '32px' : '0'"
-      [ngStyle]="styleMain">
+<main
+    [style.top]="fullScreen || title ? '32px' : '0'"
+    [ngStyle]="styleMain"
+>
     <ng-content></ng-content>
 </main>

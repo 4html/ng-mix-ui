@@ -12,6 +12,7 @@ export class GridComponent implements OnInit {
 
     @Input('height-denom') heightDenom: string;
     @Input('height-scale') heightScale : string;
+    @Input() update: any;
     @Input('width-denom') widthDenom: string;
 
     @HostListener('window:resize', [])
@@ -19,10 +20,23 @@ export class GridComponent implements OnInit {
         this.gridService.updateView();
     }
 
-    constructor(private element: ElementRef,
-                private gridService: GridService) { }
+    constructor(
+        private element: ElementRef,
+        private gridService: GridService
+    ) { }
 
-    ngOnInit() { }
+    ngOnInit(): void { }
+
+    ngOnChanges(): void {
+        setTimeout(() => {
+            this.gridService.initCells(
+                this.element.nativeElement.children,
+                this.heightDenom,
+                this.heightScale,
+                this.widthDenom
+            );
+        }, 0);
+    }
 
     ngAfterViewInit() {
         this.gridService.initCells(
@@ -32,5 +46,4 @@ export class GridComponent implements OnInit {
             this.widthDenom
         );
     }
-
 }

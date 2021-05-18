@@ -165,45 +165,47 @@ export class GridService {
         this.currentCellValues = [];
         this.rowFixedTotals = [];
 
-        this.breaks.forEach((cell, index) => {
+        if (this.breaks) {
+            this.breaks.forEach((cell, index) => {
 
-            let height = this.processPairHeights(cell);
-            let width = this.processPairWidths(cell);
+                let height = this.processPairHeights(cell);
+                let width = this.processPairWidths(cell);
 
-            if (height && !height.match(/px/) && !height.match(/%/) && !height.match(/\//)) {
-                height = (+height / this.heightDenom * 100) + '%';
-            }
+                if (height && !height.match(/px/) && !height.match(/%/) && !height.match(/\//)) {
+                    height = (+height / this.heightDenom * 100) + '%';
+                }
 
-            if (width.match(/!/)) {
-                endRow = true;
-                width = width.replace('!', '');
-            }
+                if (width.match(/!/)) {
+                    endRow = true;
+                    width = width.replace('!', '');
+                }
 
-            if (width.match(/px/)) {
-                rowFixedRunner += +width.replace('px', '');
-            } else {
-                if (rowFlexRunner === 1) {
+                if (width.match(/px/)) {
+                    rowFixedRunner += +width.replace('px', '');
+                } else {
+                    if (rowFlexRunner === 1) {
+                        this.rowFixedTotals.push(rowFixedRunner);
+                        rowIndex++;
+                        rowFlexRunner = 0;
+                        rowFixedRunner = 0;
+                    }
+                    rowFlexRunner += +width / this.widthDenom;
+                    width = (+width / this.widthDenom * 100) + '%';
+                }
+
+                this.cellRowIndexes[index] = rowIndex;
+
+                if (endRow) {
                     this.rowFixedTotals.push(rowFixedRunner);
                     rowIndex++;
+                    endRow = false;
                     rowFlexRunner = 0;
                     rowFixedRunner = 0;
                 }
-                rowFlexRunner += +width / this.widthDenom;
-                width = (+width / this.widthDenom * 100) + '%';
-            }
 
-            this.cellRowIndexes[index] = rowIndex;
-
-            if (endRow) {
-                this.rowFixedTotals.push(rowFixedRunner);
-                rowIndex++;
-                endRow = false;
-                rowFlexRunner = 0;
-                rowFixedRunner = 0;
-            }
-
-            this.currentCellValues.push({ height, width });
-        });
+                this.currentCellValues.push({ height, width });
+            });
+        }
 
         this.rowFixedTotals.push(rowFixedRunner);
 
